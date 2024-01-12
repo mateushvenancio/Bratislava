@@ -1,0 +1,6 @@
+@BratislavaApi_HostAddress = http://localhost:5277
+
+GET {{BratislavaApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
