@@ -7,3 +7,22 @@ services:
     ports:
       - "5000:5000"
       - "8080:8080"
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: bratislava
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: mateus@venancio.com
+      PGADMIN_DEFAULT_PASSWORD: mateus
+      PGADMIN_LISTEN_PORT: 5050
+    ports:
+      - '5050:5050'
+    depends_on:
+      - db
