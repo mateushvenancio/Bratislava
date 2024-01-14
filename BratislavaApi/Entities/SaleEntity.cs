@@ -1,10 +1,17 @@
-﻿namespace BratislavaApi.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BratislavaApi.Entities
 {
     public class SaleEntity
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
         public List<SaleItemEntity> ProductItems { get; set; }
-        public DateTime CreatedAt { get; set; }
+        [Required]
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public decimal Total
         {

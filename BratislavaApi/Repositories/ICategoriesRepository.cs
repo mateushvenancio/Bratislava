@@ -7,8 +7,8 @@ namespace BratislavaApi.Repositories
     {
         public List<CategoryEntity> GetAll();
         public CategoryEntity GetById(int id);
-        public CategoryEntity Create(CreateCategoryDto name);
-        public CategoryEntity Edit(EditCategoryDto name);
+        public CategoryEntity Create(CreateCategoryDto dto);
+        public CategoryEntity Edit(EditCategoryDto dto);
         public void Delete(int id);
     }
 }

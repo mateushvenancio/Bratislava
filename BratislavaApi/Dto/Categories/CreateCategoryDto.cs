@@ -10,6 +10,7 @@ namespace BratislavaApi.Dto.Categories
         [Required(ErrorMessage = "Description is required")]
         [StringLength(255, MinimumLength = 4, ErrorMessage = "Description is required to have at least 4 length")]
         public string Description { get; set; }
+        [Required]
         public bool Active { get; set; } = true;
     }
 }
