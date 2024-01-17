@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BratislavaApi.Controllers
 {
+    [ApiController]
     [Route("/categories")]
     public class CategoriesController(ICategoriesRepository repository) : Controller
     {

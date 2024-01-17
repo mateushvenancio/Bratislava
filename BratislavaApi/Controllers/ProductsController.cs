@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BratislavaApi.Controllers
 {
+    [ApiController]
     [Route("/products")]
     public class ProductsController(IProductRepository repository) : Controller
     {

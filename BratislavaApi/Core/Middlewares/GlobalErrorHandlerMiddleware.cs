@@ -22,6 +22,8 @@ namespace BratislavaApi.Core.Middlewares
                     responseApi.Result = ex.Message;
                 }
 
+                Console.WriteLine("Tipo da exceção: " + exception.GetType());
+
                 await response.WriteAsJsonAsync(responseApi);
             }
         }
