@@ -10,5 +10,6 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /api
 COPY --from=build-env /api/out .
+
 EXPOSE 5000
 ENTRYPOINT ["dotnet", "BratislavaApi.dll"]

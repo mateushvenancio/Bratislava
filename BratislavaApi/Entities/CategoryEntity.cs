@@ -16,6 +16,6 @@ namespace BratislavaApi.Entities
         [Required]
         public bool Active { get; set; } = true;
         [Required]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

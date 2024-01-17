@@ -1,12 +1,12 @@
 version: '3'
 services:
-  servidor:
-    build:
-      context: ./BratislavaApi
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-      - "8080:8080"
+  # servidor:
+  #   build:
+  #     context: ./BratislavaApi
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5000:5000"
+  #     - "8080:8080"
   db:
     image: postgres:latest
     environment:

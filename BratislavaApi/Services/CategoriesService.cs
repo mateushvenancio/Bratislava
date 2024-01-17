@@ -1,4 +1,5 @@
-﻿using BratislavaApi.DbContexts;
+﻿using BratislavaApi.Core.Exceptions;
+using BratislavaApi.DbContexts;
 using BratislavaApi.Dto.Categories;
 using BratislavaApi.Entities;
 using BratislavaApi.Repositories;
@@ -14,7 +15,7 @@ namespace BratislavaApi.Services
                 Active = true,
                 Name = dto.Name,
                 Description = dto.Description,
-                CreatedAt = DateTime.Now,
+                CreatedAt = DateTime.UtcNow,
             };
             context.Categories.Add(category);
             context.SaveChanges();
@@ -31,7 +32,7 @@ namespace BratislavaApi.Services
 
         public CategoryEntity Edit(EditCategoryDto dto)
         {
-            var category = context.Categories.Find(dto.Id) ?? throw new NotImplementedException();
+            var category = context.Categories.Find(dto.Id) ?? throw new NotFoundException("Category not found");
             CategoryEntity editedCategory = new()
             {
                 Id = dto.Id,
@@ -51,7 +52,7 @@ namespace BratislavaApi.Services
 
         public CategoryEntity GetById(int id)
         {
-            return context.Categories.Find(id) ?? throw new NotImplementedException();
+            return context.Categories.Find(id) ?? throw new NotFoundException("Category not found");
         }
     }
 }

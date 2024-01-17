@@ -1,4 +1,5 @@
-﻿using BratislavaApi.DbContexts;
+﻿using BratislavaApi.Core.Exceptions;
+using BratislavaApi.DbContexts;
 using BratislavaApi.Dto.Products;
 using BratislavaApi.Entities;
 using BratislavaApi.Repositories;
@@ -9,12 +10,12 @@ namespace BratislavaApi.Services
     {
         public ProductEntity Create(CreateProductDto dto)
         {
-            var category = context.Categories.Find(dto.CategoryId) ?? throw new NotImplementedException();
+            var category = context.Categories.Find(dto.CategoryId) ?? throw new NotFoundException("Category not found");
             var product = new ProductEntity()
             {
                 Name = dto.Name,
                 Description = dto.Description,
-                CreatedAt = DateTime.Now,
+                CreatedAt = DateTime.UtcNow,
                 Category = category,
                 Price = dto.Price,
                 DiscountPercentage = dto.DiscountPercentage,
@@ -33,7 +34,7 @@ namespace BratislavaApi.Services
 
         public ProductEntity Edit(EditProductDto dto)
         {
-            var oldProduct = context.Products.Find(dto.Id) ?? throw new NotImplementedException();
+            var oldProduct = context.Products.Find(dto.Id) ?? throw new NotFoundException("Product not found");
             CategoryEntity? newCategory;
 
             if (dto.CategoryId == null || oldProduct.Category.Id == dto.CategoryId)
@@ -45,7 +46,7 @@ namespace BratislavaApi.Services
                 newCategory = context.Categories.Find(dto.CategoryId);
             }
 
-            if (newCategory == null) { throw new NotImplementedException(); }
+            if (newCategory == null) { throw new NotFoundException("Category not found"); }
 
             var editedProduct = new ProductEntity()
             {
@@ -70,7 +71,7 @@ namespace BratislavaApi.Services
 
         public ProductEntity GetById(int id)
         {
-            return context.Products.Find(id) ?? throw new NotImplementedException();
+            return context.Products.Find(id) ?? throw new NotFoundException("Product not found");
         }
     }
 }

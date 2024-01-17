@@ -11,7 +11,7 @@ namespace BratislavaApi.Entities
         [Required]
         public List<SaleItemEntity> ProductItems { get; set; }
         [Required]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public decimal Total
         {
